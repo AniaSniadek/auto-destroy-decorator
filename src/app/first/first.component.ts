@@ -8,7 +8,7 @@ import { Observable, Subject, Subscriber, takeUntil } from 'rxjs';
   styleUrls: ['./first.component.css'],
 })
 export class FirstComponent implements OnInit, OnDestroy {
-  private _destroy$ = new Subject<void>();
+  destroy$: Subject<void> = new Subject<void>();
   observable: Observable<string> = new Observable(
     (subscriber: Subscriber<string>) => {
       subscriber.next('START IN FIRST COMPONENT');
@@ -21,13 +21,13 @@ export class FirstComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.observable
-      .pipe(takeUntil(this._destroy$))
+      .pipe(takeUntil(this.destroy$))
       .subscribe((value) => console.log(`%c${value}`, 'color: #bada55'));
   }
 
   ngOnDestroy(): void {
-    this._destroy$.next();
-    this._destroy$.complete();
+    this.destroy$.next();
+    this.destroy$.complete();
     console.log('%cDESTROY FIRST COMPONENT', 'color: #bada55');
   }
 }

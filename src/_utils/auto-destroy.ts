@@ -1,6 +1,6 @@
-// Property decorator for automatically unsubscribe - this only works on a Subject<void> variable
-export function AutoDestroy$(component: any, key: string | symbol): void {
-  const originalOnDestroy: Function = component.ngOnDestroy;
+// Property decorator to automatically destroy subscriptions - this only works on a Subject<void> variable
+export function AutoDestroy(component: any, key: string | symbol): void {
+  const originalOnDestroy = component.ngOnDestroy;
 
   // override ngOnDestroy() in component
   component.ngOnDestroy = function () {
@@ -11,6 +11,7 @@ export function AutoDestroy$(component: any, key: string | symbol): void {
     // unsubscribe in ngOnDestroy()
     this[key].next();
     this[key].complete();
+    // remove console.log - just example to show how this is working
     console.log('%cDESTROY SECOND COMPONENT', 'color: #33ffe6');
   };
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, Subscriber, takeUntil } from 'rxjs';
-import { AutoDestroy$ } from 'src/_utils/auto-destroy';
+import { AutoDestroy } from 'src/_utils/auto-destroy';
 
 // Use case of @AutoDestroy decorator (no need to add ngOnDestroy(), if we have it no need to call next() and complete())
 @Component({
@@ -9,7 +9,7 @@ import { AutoDestroy$ } from 'src/_utils/auto-destroy';
   styleUrls: ['./second.component.css'],
 })
 export class SecondComponent implements OnInit {
-  @AutoDestroy$ private _destroy$: Subject<void> = new Subject<void>();
+  @AutoDestroy destroy$: Subject<void> = new Subject<void>();
   observable: Observable<string> = new Observable(
     (subscriber: Subscriber<string>) => {
       subscriber.next('START IN SECOND COMPONENT');
@@ -22,7 +22,7 @@ export class SecondComponent implements OnInit {
 
   ngOnInit(): void {
     this.observable
-      .pipe(takeUntil(this._destroy$))
+      .pipe(takeUntil(this.destroy$))
       .subscribe((value: string) =>
         console.log(`%c${value}`, 'color: #33ffe6')
       );

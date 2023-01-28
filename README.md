@@ -1,7 +1,5 @@
-# AutoDestroy decorator example
+# @AutoDestroy decorator 🔥
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.5.
+This is the source code for the `@AutoDestroy` property decorator. The main purpose of this decorator is to automatically destroy subscriptions in Angular components.
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+If you want to test it check it out on [StackBlitz ⚡️]().
