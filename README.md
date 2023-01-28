@@ -26,11 +26,7 @@ Use it in component like this:
 
 ```js
 @Component(...)
-export class AppComponent implements OnInit {
+export class AppComponent {
   @AutoDestroy destroy$: Subject<void> = new Subject<void>();
-
-  ngOnInit(): void {
-    of('example value').pipe(takeUntil(this.destroy$)).subscribe();
-  }
 }
 ```
