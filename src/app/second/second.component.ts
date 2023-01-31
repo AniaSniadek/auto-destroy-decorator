@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, Subscriber, takeUntil } from 'rxjs';
-import { AutoDestroy } from 'src/_utils/auto-destroy';
+import { AutoDestroy } from '../../_utils/auto-destroy';
 
 // Use case of @AutoDestroy decorator (no need to add ngOnDestroy(), if we have it no need to call next() and complete())
 @Component({
