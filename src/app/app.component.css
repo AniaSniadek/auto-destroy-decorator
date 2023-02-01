@@ -3,3 +3,26 @@
   margin: 0 auto;
   margin-top: 50px;
 }
+
+.tabs {
+  width: 400px;
+  display: flex;
+  height: 48px;
+  margin-bottom: 25px;
+}
+
+.tab {
+  flex: 0 0 50%;
+  font-size: 16px;
+  color: #6a6a6a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.active-tab {
+  color: #3f50b5;
+  border-bottom: 2px solid #3f50b5;
+  background-color: rgba(63, 80, 181, 0.1);
+}

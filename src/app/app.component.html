@@ -1,14 +1,19 @@
 <section class="app">
-  <mat-tab-group>
-    <mat-tab label="First">
-      <ng-template matTabContent>
-        <app-first></app-first>
-      </ng-template>
-    </mat-tab>
-    <mat-tab label="Second">
-      <ng-template matTabContent>
-        <app-second></app-second>
-      </ng-template>
-    </mat-tab>
-  </mat-tab-group>
+  <div class="tabs">
+    <div
+      class="tab"
+      [class.active-tab]="activeTab === 'first'"
+      (click)="changeTab('first')"
+    >
+      First
+    </div>
+    <div
+      class="tab"
+      [class.active-tab]="activeTab === 'second'"
+      (click)="changeTab('second')"
+    >
+      Second
+    </div>
+  </div>
+  <router-outlet></router-outlet>
 </section>
