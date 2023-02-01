@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { Event, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 @Component({
@@ -9,7 +9,7 @@ import { filter } from 'rxjs';
 export class AppComponent {
   activeTab: string = 'first';
 
-  constructor(private _router: Router) {
+  constructor(private _router: Router, private _cdr: ChangeDetectorRef) {
     this._router.events
       .pipe(
         filter(
@@ -19,11 +19,7 @@ export class AppComponent {
       )
       .subscribe((event: NavigationEnd) => {
         this.activeTab = event.url.replace(/^\/|\/$/g, '');
+        this._cdr.markForCheck();
       });
-  }
-
-  changeTab(tab: string): void {
-    this.activeTab = tab;
-    this._router.navigate([`/${tab}`]);
   }
 }

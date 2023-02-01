@@ -3,14 +3,14 @@
     <div
       class="tab"
       [class.active-tab]="activeTab === 'first'"
-      (click)="changeTab('first')"
+      [routerLink]="'first'"
     >
       First
     </div>
     <div
       class="tab"
       [class.active-tab]="activeTab === 'second'"
-      (click)="changeTab('second')"
+      [routerLink]="'second'"
     >
       Second
     </div>
